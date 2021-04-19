@@ -10,12 +10,16 @@ h2 {
 }
 body {
     font-family: 'Orelega One', cursive;
-    background-image: url("books.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+nav {
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 a {
