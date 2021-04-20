@@ -1,5 +1,7 @@
 <!DOCTYPE html>
     <html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script.js"></script>
     <head>
       <meta charset="UTF-8">
       <title>ITSC 3155 051 - Project</title>
@@ -22,10 +24,10 @@
         <!-- sEAR BOX -->
         <div class="center">
             <h3 class="center">Search for article</h3>
-            <div class="search">
-                <form class="bar">
-                    <input type="text" placeholder="Type article to search" id="searchArticle">
-                    <button type="submit" onclick="execute();">Search</button>
+            <div class="search" >
+                <form class="bar">            
+                    <input type="text" placeholder="Type article to search" id="title">               
+                    <button type="submit" onclick="execute()">Search</button>
                 </form>
             </div>
         </div>
@@ -51,11 +53,9 @@
         </div>
         
         <div class="center">
-            <div id="articleResult" style="margin-top: 5%; margin-bottom: 5%;">
+            <div style="margin-top: 5%; margin-bottom: 5%" id="articleResult">
             </div>
         </div>
-
-        <script src="script.js"> </script>
 
     </body>
 

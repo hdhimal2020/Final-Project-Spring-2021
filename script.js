@@ -136,37 +136,49 @@ fetch(usurl)
     })
   });
 
-function execute() {
   
   const articleUrl1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=";
   const articleUrl2 = "&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-
-  var articleUrl = articleUrl1+"covid"+articleUrl2;
-
-  console.log(articleUrl);
-
-  let articleResult =  document.getElementById("articleResult");
-
-  fetch(articleUrl)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-
-      data.response.docs.map(article => {
-        // gathering article link
-        let link = document.createElement("a");
-        link.setAttribute('href', article.web_url);
-        link.innerHTML = article.web_url;
+  // commenting out function to make sure data gets processed for some reason it does not work when wrapped in function
+  //function execute() { 
+  
+    var productList;
+    var productListAdd;    
+    
+    // testing we are getting the info from the searchbox
+    console.log($.trim($('#title').val()));
+    
+    //jQuery Ajax request
+    $.ajax({
+        // commenting line below to hardcode url for testing purposes
+        //url: articleUrl1 + $.trim($('#title').val()) + articleUrl2, //API url
+        url: articleUrl1 + "covid"+ articleUrl2, //temp hard ooded covid search for testing purposes
+        type: 'get', //type of request (get)
+        dataType: 'json', //dataType, which is json for this lab.
+        contentType: 'text/plain', //contentType, which is text/plain since json is sent as plain text.
         
-        // gathering description from article
-        let description = document.createElement("p");
-        description.innerHTML = article.snippet;
-        
-        // displayin it on the page
-        articleResult.appendChild(description);
-        articleResult.appendChild(link);    
-      })
-      
+
+        success: function (data) { //on success calls this functions and passes the API response as the data parameter.
+            productList='';
+            console.log(data);
+
+            $.each(data['response']['docs'], function(i, item) {
+              console.log(item.web_url);
+                //this is HTML code that is reactively added to the page, your TODO solutions do not need this.
+                productListAdd = 
+                '<p>'+item.abstract+'</p>' +
+                '<a href='+item.web_url+'>'+item.web_url+'</a>';
+
+                productList=productList+productListAdd;
+
+            });
+            $('#articleResult').html(productList);
+
+        },
+        error: function (data) { //on error, alert the user.
+            alert("Error while fetching data.");
+        }
+
     });
-
-}
+    
+  //} // commenting out function to make sure data gets processed
