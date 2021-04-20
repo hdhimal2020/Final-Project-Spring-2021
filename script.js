@@ -136,38 +136,37 @@ fetch(usurl)
     })
   });
 
-const articleUrl1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=";
-const articleUrl2 = "&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
+function execute() {
+  
+  const articleUrl1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=";
+  const articleUrl2 = "&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
 
-var articleUrl = articleUrl1+"covid"+articleUrl2;
+  var articleUrl = articleUrl1+"covid"+articleUrl2;
 
-console.log(articleUrl);
+  console.log(articleUrl);
 
-let articleResult =  document.getElementById("articleResult");
+  let articleResult =  document.getElementById("articleResult");
 
-fetch(articleUrl)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
+  fetch(articleUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
 
-    data.response.docs.map(article => {
-      // gathering article link
-      let link = document.createElement("a");
-      link.setAttribute('href', article.web_url);
-      link.innerHTML = article.web_url;
+      data.response.docs.map(article => {
+        // gathering article link
+        let link = document.createElement("a");
+        link.setAttribute('href', article.web_url);
+        link.innerHTML = article.web_url;
+        
+        // gathering description from article
+        let description = document.createElement("p");
+        description.innerHTML = article.snippet;
+        
+        // displayin it on the page
+        articleResult.appendChild(description);
+        articleResult.appendChild(link);    
+      })
       
-      // gathering description from article
-      let description = document.createElement("p");
-      description.innerHTML = article.snippet;
+    });
 
-      // gathering image of article
-      let image = document.createElement("img");
-      image.setAttribute('src', article.multimedia[0].url);
-      
-      // displayin it on the page
-      articleResult.appendChild(image);
-      articleResult.appendChild(description);
-      articleResult.appendChild(link);    
-    })
-    
-  });
+}
