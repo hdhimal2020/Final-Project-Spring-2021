@@ -13,8 +13,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
 nav {
@@ -25,8 +25,8 @@ nav {
 a {
   display: block;
   color: black;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-bottom: 12px;
   font-size: 18px;
 }
@@ -77,5 +77,41 @@ p {
     padding: 10px 12px;
     text-decoration: none;
   }
-  
-  
+ 
+  /* This is for the search box */
+  .search {
+    margin-left: 20%;
+    margin-right: 10%;
+    margin-top: 1%;
+}
+
+form.bar input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 70%;
+  background: #f1f1f1;
+}
+
+form.bar button {
+  float: left;
+  width: 12%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.bar button:hover {
+  background: #0b7dda;
+}
+
+form.bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}  
