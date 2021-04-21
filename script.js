@@ -136,34 +136,38 @@ fetch(usurl)
     })
   });
 
-  
+  // constants for the URL api
   const articleUrl1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=";
   const articleUrl2 = "&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-  // commenting out function to make sure data gets processed for some reason it does not work when wrapped in function
-  //function execute() { 
   
+  
+
+  // commenting out function to make sure data gets processed for some reason it does not work when wrapped in function
+  function execute(){
+    //var article = "Covid";
+    //var article = document.getElementById('title');
+    let article =$.trim($('#title').val())
+    event.preventDefault();
+    console.log(article);
+
     var productList;
     var productListAdd;    
-    
-    // testing we are getting the info from the searchbox
-    console.log($.trim($('#title').val()));
     
     //jQuery Ajax request
     $.ajax({
         // commenting line below to hardcode url for testing purposes
-        //url: articleUrl1 + $.trim($('#title').val()) + articleUrl2, //API url
-        url: articleUrl1 + "covid"+ articleUrl2, //temp hard ooded covid search for testing purposes
+        url: articleUrl1 + article + articleUrl2, //API url
+        //url: articleUrl1 + "cats" + articleUrl2, //temp hard-coded covid search for testing purposes
         type: 'get', //type of request (get)
         dataType: 'json', //dataType, which is json for this lab.
         contentType: 'text/plain', //contentType, which is text/plain since json is sent as plain text.
-        
 
         success: function (data) { //on success calls this functions and passes the API response as the data parameter.
             productList='';
             console.log(data);
 
             $.each(data['response']['docs'], function(i, item) {
-              console.log(item.web_url);
+              //console.log(item.web_url);
                 //this is HTML code that is reactively added to the page, your TODO solutions do not need this.
                 productListAdd = 
                 '<p>'+item.abstract+'</p>' +
@@ -180,5 +184,5 @@ fetch(usurl)
         }
 
     });
-    
-  //} // commenting out function to make sure data gets processed
+  
+  }; // end of function
