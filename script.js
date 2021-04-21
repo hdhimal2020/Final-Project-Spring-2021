@@ -1,19 +1,17 @@
-// https://api.nytimes.com/svc/topstories/v2/world.json?api-key=yourkey
-// bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ
+// constants for the API SEARCH BOX
+const articleUrl1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=";
+const articleUrl2 = "&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
 
-// <a href="https://website.com">[text]<a/>
-// div id --->  latestheadlines
+// https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=covid"&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ
 
-// world
+// world headlines
 let url = "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-// science
+// science headlines
 let scienceurl = "https://api.nytimes.com/svc/topstories/v2/science.json?api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-// arts
+// arts headlines
 let art = "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-// US
+// US headlines
 let usurl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-// article search
-//let articleurl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=covid&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
 
 // to appendage in website | world
 let latestheadlines =  document.getElementById("latestheadlines");
@@ -25,21 +23,22 @@ fetch(url)
     //console.log(data);
 
     data.results.map(article => {
-      //console.log(article.title);
+      //console.log(article); // console logging array values
 
       // gathering article link
-      let a = document.createElement("a");
+      let a = document.createElement("a"); // creating an element for url
       a.setAttribute('href', article.url);
       a.innerHTML = article.title;
       
       // gathering description from article
-      let description = document.createElement("p");
+      let description = document.createElement("p"); // creating paragraph element
       description.innerHTML = article.abstract;
 
       // gathering image of article
-      let image = document.createElement("img");
+      let image = document.createElement("img"); // creating image element
       image.setAttribute('src', article.multimedia[0].url);
 
+      // using append function to have information shown dynamically in web page
       latestheadlines.appendChild(image);
       latestheadlines.appendChild(a);
       latestheadlines.appendChild(description);
@@ -58,18 +57,19 @@ fetch(scienceurl)
       //console.log(article.title);
 
       // gathering article link
-      let link = document.createElement("a");
+      let link = document.createElement("a"); // creating an element for url
       link.setAttribute('href', article.url);
       link.innerHTML = article.title;
       
       // gathering description from article
-      let description = document.createElement("p");
+      let description = document.createElement("p"); // creating paragraph element
       description.innerHTML = article.abstract;
 
       // gathering image of article
-      let image = document.createElement("img");
+      let image = document.createElement("img"); // creating image element
       image.setAttribute('src', article.multimedia[0].url);
 
+      // using append function to have information shown dynamically in web page
       scienceheadlines.appendChild(image);
       scienceheadlines.appendChild(link);
       scienceheadlines.appendChild(description);
@@ -88,18 +88,19 @@ fetch(art)
       //console.log(article.title);
 
       // gathering article link
-      let link = document.createElement("a");
+      let link = document.createElement("a"); // creating an element for url
       link.setAttribute('href', article.url);
       link.innerHTML = article.title;
       
       // gathering description from article
-      let description = document.createElement("p");
+      let description = document.createElement("p"); // creating paragraph element
       description.innerHTML = article.abstract;
 
       // gathering image of article
-      let image = document.createElement("img");
+      let image = document.createElement("img"); // creating image element
       image.setAttribute('src', article.multimedia[0].url);
 
+      // using append function to have information shown dynamically in web page
       arts.appendChild(image);
       arts.appendChild(link);
       arts.appendChild(description);
@@ -117,18 +118,19 @@ fetch(usurl)
     data.results.map(article => {
 
       // gathering article link
-      let link = document.createElement("a");
+      let link = document.createElement("a"); // creating an element for url
       link.setAttribute('href', article.url);
       link.innerHTML = article;
       
       // gathering description from article
-      let description = document.createElement("p");
+      let description = document.createElement("p"); // creating paragraph element
       description.innerHTML = article.abstract;
 
       // gathering image of article
-      let image = document.createElement("img");
+      let image = document.createElement("img"); // creating image element
       image.setAttribute('src', article.multimedia[0].url);
 
+      // using append function to have information shown dynamically in web page
       us.appendChild(image);
       us.appendChild(link);
       us.appendChild(description);
@@ -136,46 +138,42 @@ fetch(usurl)
     })
   });
 
-  // constants for the URL api
-  const articleUrl1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=";
-  const articleUrl2 = "&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-  
-  
-
-  // commenting out function to make sure data gets processed for some reason it does not work when wrapped in function
+  // function to search through NYT article search API with user's provided keyword
   function execute(){
-    //var article = "Covid";
-    //var article = document.getElementById('title');
+    // getting users input
     let article =$.trim($('#title').val())
+    // preventing web page from reloading
     event.preventDefault();
-    console.log(article);
+    console.log(article); 
 
     var productList;
     var productListAdd;    
     
     //jQuery Ajax request
     $.ajax({
-        // commenting line below to hardcode url for testing purposes
-        url: articleUrl1 + article + articleUrl2, //API url
-        //url: articleUrl1 + "cats" + articleUrl2, //temp hard-coded covid search for testing purposes
+        url: articleUrl1 + article + articleUrl2, // Concatenated API url
         type: 'get', //type of request (get)
-        dataType: 'json', //dataType, which is json for this lab.
-        contentType: 'text/plain', //contentType, which is text/plain since json is sent as plain text.
-
-        success: function (data) { //on success calls this functions and passes the API response as the data parameter.
+        dataType: 'json', 
+        contentType: 'text/plain', 
+        
+        //on success calls this functions and passes the API response as the data parameter.
+        success: function (data) { 
             productList='';
-            console.log(data);
-
+            
+            // looping through nested arrays
             $.each(data['response']['docs'], function(i, item) {
-              //console.log(item.web_url);
-                //this is HTML code that is reactively added to the page, your TODO solutions do not need this.
+              
+                //this is HTML code that is reactively added to the index page
                 productListAdd = 
+                // gathering the abstract title of the article
                 '<p>'+item.abstract+'</p>' +
+                // creating a link to the main source of the article
                 '<a href='+item.web_url+'>'+item.web_url+'</a>';
 
                 productList=productList+productListAdd;
 
             });
+            // adding the html to the id 
             $('#articleResult').html(productList);
 
         },
