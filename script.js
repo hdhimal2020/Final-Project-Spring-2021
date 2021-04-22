@@ -119,7 +119,7 @@ fetch(usurl)
       // gathering article link
       let link = document.createElement("a"); // creating an element for url
       link.setAttribute('href', article.url);
-      link.innerHTML = article;
+      link.innerHTML = article.url;
       
       // gathering description from article
       let description = document.createElement("p"); // creating paragraph element
