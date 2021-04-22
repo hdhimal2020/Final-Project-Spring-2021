@@ -10,8 +10,9 @@
       <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
     </head>
 
-    <nav>
+    <nav style="margin-top: 2%" class="center">
         <ul>
+            
             <li><a class="active" href="index.html">Home</a></li>
             <li><a href="world.html">World</a></li>
             <li><a href="arts.html">Arts</a></li>
@@ -21,9 +22,15 @@
     </nav>
 
     <body>
+        <div class="center">
+            <img id='logo' src="images/nytlogo.png" alt="New York Times Logo" height="30">
+            <h1>New York Times</h1>
+            
+         </div>              
+        
         <!-- SEARCH BOX -->
         <div class="center">
-            <h3 class="center">Search for article</h3>
+            <h2>Search for article</h2>
             <div class="search" >
                 <form class="bar">            
                     <input type="text" placeholder="Type article to search" id="title">               
@@ -32,12 +39,12 @@
             </div>
         </div>
 
-        <div class="center">
-            <h1>New York Times</h1>
-            <h2>NYT Headlines</h2>          
-        </div>
-
-        <div class="center">
+        
+       
+        <!-- NOT SURE IF WE NEED HEADLINES DIV AS NAV IS TAKING CARE OF THIS
+            LETS DISCUSS IN PRESENTATION
+        <div class="center" style="font-weight: bold;">
+            <h2>NYT Headlines</h2>
             <p>
                 <a href="world.html">World Latest Headlines</a> 
             </p>
@@ -51,6 +58,7 @@
                 <a href="us.html">U.S. Latest Headlines</a>
             </p>
         </div>
+    -->
         
         <div class="center">
             <div style="margin-top: 2%; margin-bottom: 2%" id="articleResult">
@@ -61,9 +69,13 @@
 
     <footer class="foot">
         <div>
-            <p>Created By:</p>        
-                    <p>Alex Raygoza | Hari Dhimal</p>
-                    <p>ITSC-3155-051 Group#9 | Fall 2021</p>
+            <p>Created By:</p>
+                <a href="https://github.com/charankio" target="_blank">Alex Raygoza</a>
+                        
+                <!--<p>Alex Raygoza | Hari Dhimal</p>-->
+                <a href="https://github.com/hdhimal2020" target="_blank">Hari Dhimal</a>
+            
+                <p>ITSC-3155-051 Group#9 | Fall 2021</p>
         </div>
     </footer>
 </html>

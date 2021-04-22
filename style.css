@@ -1,15 +1,10 @@
 .center {
     text-align: center;
   }
-h1 {
-  font-size: 46px;
-}
 
-h2 {
-  font-size: 30px;
-}
 body {
-    font-family: 'Orelega One', cursive;
+    background-image: url("images/news.jpg");
+    font-family: 'Times New Roman', Times, serif;
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
@@ -22,18 +17,28 @@ nav {
   margin-right: 20%;
 }
 
+h1 {
+  font-family: 'Orelega One', cursive;
+  font-size: 46px;
+}
+
+h2 {
+  font-family: 'Orelega One', cursive;
+  font-size: 30px;
+}
+
 a {
   display: block;
   color: black;
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 a:hover {
   color: #2196F3;
-  font-size: 20px;
+  font-size: 26px;
 }
 
 a:link {
@@ -41,11 +46,16 @@ a:link {
 }
 
 img {
-  height: 300px;
+  height: 250px;
+}
+
+#logo {
+  height: 100px;
 }
 
 p {
-  font-size: 22px;
+  font-weight: bold;
+  font-size: 24px;
   margin-left: 30%;
   margin-right: 30%;
 }
@@ -54,8 +64,8 @@ p {
   .foot {
     text-align: center;
     font-size: 8px;
-    font-family: 'Courier New', Courier, monospace;
-    margin: 18%;
+    font-family: 'Orelega One', cursive;
+    margin: 10%;
   }
 
   ul {

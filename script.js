@@ -1,9 +1,8 @@
 // constants for the API SEARCH BOX
 const articleUrl1 = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=";
 const articleUrl2 = "&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
-
 // https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=The%20New%20York%20Times&q=covid"&api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ
-
+const imgUrl = "https://static01.nyt.com/";
 // world headlines
 let url = "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=bo1zGgDSAuDUbpe5spvdoz37Hgc9fldJ";
 // science headlines
@@ -142,9 +141,9 @@ fetch(usurl)
   function execute(){
     // getting users input
     let article =$.trim($('#title').val())
+    
     // preventing web page from reloading
-    event.preventDefault();
-    console.log(article); 
+    event.preventDefault(); 
 
     var productList;
     var productListAdd;    
@@ -159,16 +158,18 @@ fetch(usurl)
         //on success calls this functions and passes the API response as the data parameter.
         success: function (data) { 
             productList='';
-            
+            console.log(data);
             // looping through nested arrays
             $.each(data['response']['docs'], function(i, item) {
               
                 //this is HTML code that is reactively added to the index page
                 productListAdd = 
+                // adding multimedia
+                '<img src='+ imgUrl + item.multimedia[3].url+'>' +
                 // gathering the abstract title of the article
                 '<p>'+item.abstract+'</p>' +
                 // creating a link to the main source of the article
-                '<a href='+item.web_url+'>'+item.web_url+'</a>';
+                '<a href='+item.web_url+' target="_blank">'+item.web_url+'</a>';
 
                 productList=productList+productListAdd;
 
